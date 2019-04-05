@@ -3,7 +3,7 @@
 This is the github page for the paper
 
     Learning Non-volumetric Depth Fusion using Successive Reprojections
-    Simon Donn√, Andreas Geiger
+    Simon Donn√©, Andreas Geiger
     CVPR 2019 (accepted)
 
 Code will be published here by the time the manuscript is published.
