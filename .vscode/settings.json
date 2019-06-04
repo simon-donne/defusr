@@ -1,0 +1,10 @@
+{
+    "python.pythonPath": "/home/sdonne/anaconda3/envs/defusr/bin/python",
+    "files.exclude": {
+        "**/__pycache__": true,
+      },
+    "python.linting.pylintArgs": [
+        "--errors-only",
+        "--generated-members=numpy.* ,torch.* ,cv2.* , rs.*, open3d.*, o3d.*, TOME.*, optimization_data.*",
+    ],
+}
