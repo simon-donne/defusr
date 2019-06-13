@@ -40,5 +40,5 @@ It can be compiled by
 
 ## Running the evaluation
 
-For running the evaluation, download the pretrained networks [[here]], as well as the DTU dataset.
+For running the evaluation, download the pretrained networks [here](https://avg.is.tuebingen.mpg.de/research_projects/defusr), as well as the DTU dataset.
 Fix the relevant paths in the scripts in the `evaluations/` folder, and run the scripts.
