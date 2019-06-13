@@ -42,3 +42,4 @@ It can be compiled by
 
 For running the evaluation, download the pretrained networks [here](https://avg.is.tuebingen.mpg.de/research_projects/defusr), as well as the DTU dataset.
 Fix the relevant paths in the scripts in the `evaluations/` folder, and run the scripts.
+First, however, the colmap and MVSNet outputs will need to be created. Please refer to the relevant scripts in the data/ folder for this.
