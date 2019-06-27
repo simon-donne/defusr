@@ -6,7 +6,7 @@ This is the github page for the paper
     Simon Donné, Andreas Geiger
     CVPR 2019
 
-Code will be published here by the time the manuscript is published.
+All relevant code is available here.
 For the datasets, videos, and so on, please visit https://avg.is.tuebingen.mpg.de/research_projects/defusr.
 
 ## Requirements / Setting up
