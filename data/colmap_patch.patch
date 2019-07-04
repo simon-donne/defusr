@@ -1,0 +1,57 @@
+diff --git a/src/mvs/model.cc b/src/mvs/model.cc
+index 5fc0237..9966f67 100755
+--- a/src/mvs/model.cc
++++ b/src/mvs/model.cc
+@@ -129,6 +129,7 @@ std::vector<std::vector<int>> Model::GetMaxOverlappingImages(
+       ComputeTriangulationAngles(kTriangulationAnglePercentile);
+ 
+   for (size_t image_idx = 0; image_idx < images.size(); ++image_idx) {
++    printf("Image %d\n", image_idx);
+     const auto& shared_images = shared_num_points.at(image_idx);
+     const auto& overlapping_triangulation_angles =
+         triangulation_angles.at(image_idx);
+@@ -136,10 +137,10 @@ std::vector<std::vector<int>> Model::GetMaxOverlappingImages(
+     std::vector<std::pair<int, int>> ordered_images;
+     ordered_images.reserve(shared_images.size());
+     for (const auto& image : shared_images) {
+-      if (overlapping_triangulation_angles.at(image.first) >=
+-          min_triangulation_angle_rad) {
++      printf("\tneighbour image %d\n", image.first);
++//      if (overlapping_triangulation_angles.at(image.first) >= min_triangulation_angle_rad) {
+         ordered_images.emplace_back(image.first, image.second);
+-      }
++//      }
+     }
+ 
+     const size_t eff_num_images = std::min(ordered_images.size(), num_images);
+@@ -216,8 +217,9 @@ std::vector<std::pair<float, float>> Model::ComputeDepthRanges() const {
+ }
+ 
+ std::vector<std::map<int, int>> Model::ComputeSharedPoints() const {
+-  std::vector<std::map<int, int>> shared_points(images.size());
+-  for (const auto& point : points) {
++ std::vector<std::map<int, int>> shared_points(images.size());
++ bool found = false;
++ for (const auto& point : points) {
+     for (size_t i = 0; i < point.track.size(); ++i) {
+       const int image_idx1 = point.track[i];
+       for (size_t j = 0; j < i; ++j) {
+@@ -225,10 +227,18 @@ std::vector<std::map<int, int>> Model::ComputeSharedPoints() const {
+         if (image_idx1 != image_idx2) {
+           shared_points.at(image_idx1)[image_idx2] += 1;
+           shared_points.at(image_idx2)[image_idx1] += 1;
++          found=true;
+         }
+       }
+     }
+   }
++  if(!found){
++      for( size_t idx = 0; idx < images.size(); idx++) {
++      for( size_t idx2 = 0; idx2 < images.size(); idx2++) {
++        shared_points.at(idx)[idx2] += 1;
++      }
++      }
++  }
+   return shared_points;
+ }
+ 
