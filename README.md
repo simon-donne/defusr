@@ -44,4 +44,4 @@ For running the evaluation, download the pretrained networks [here](https://avg.
 Fix the relevant paths in the scripts in the `evaluations/` folder, and run the scripts.
 First, however, the colmap and MVSNet outputs will need to be created. Please refer to the relevant scripts in the data/ folder for this.
 For the COLMAP fusion, a patch to the base COLMAP version is necessary (which allows fusion without sparse matches, i.e. from the manually generated fusion lists).
-You can find the patch [here](data/colmap_patch.patchdata/colmap_patch.patch).
+You can find the patch [here](data/colmap_patch.patch).
