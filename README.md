@@ -45,3 +45,7 @@ Fix the relevant paths in the scripts in the `evaluations/` folder, and run the 
 First, however, the colmap and MVSNet outputs will need to be created. Please refer to the relevant scripts in the data/ folder for this.
 For the COLMAP fusion, a patch to the base COLMAP version is necessary (which allows fusion without sparse matches, i.e. from the manually generated fusion lists).
 You can find the patch [here](data/colmap_patch.patch).
+
+## External dependencies
+
+For the MVSNet repository, I suggest checking out commit 9284c4bc8. The scripts provided here interface with the output created by that commit.
