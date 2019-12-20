@@ -18,6 +18,8 @@ array=("${array1[@]}" "${array2[@]}")
 PTPATH_BASE="$BASE_DATA_FOLDER/dtu/Points/MVSNet/0.25"
 mkdir -p PTPATH_BASE
 
+. /home/sdonne/anaconda3/etc/profile.d/conda.sh
+
 for SCANNR in ${array[@]}
 do
     IMGPATH="$BASE_DATA_FOLDER/dtu/Rectified/scan$SCANNR/"
@@ -33,22 +35,22 @@ do
 
     rm -rf $WORKPATH
 
-    conda activate ddf_pytorch
+
+    conda activate defusr
     mkdir -p $WORKPATH
     mkdir -p $WORKPATH/images
     mkdir -p $WORKPATH/cams
-    python data/dtu/mvsnet_create_files.py $IMGPATH $CAMPATH $WORKPATH
+    python data/dtu/_mvsnet_create_files.py $IMGPATH $CAMPATH $WORKPATH
 
-    cd /is/sg/sdonne/Desktop/research/MVSNet/mvsnet/
-    . /is/sg/sdonne/anaconda3/etc/profile.d/conda.sh
     conda activate MVSNet
+    cd /home/sdonne/Desktop/defusr_test/MVSNet/mvsnet/
     python test.py --dense_folder $WORKPATH &> /dev/null
     python depthfusion.py --dense_folder $WORKPATH --fusibile_exe_path $MVSNET_FUSIBILE &> /dev/null
 
+    conda activate defusr
     mkdir -p $WORKPATH/depth
     cd -
-    conda activate ddf_pytorch
-    python data/dtu/mvsnet_convert_results.py $WORKPATH
+    python data/dtu/4_mvsnet_convert_results.py $WORKPATH
 
     mv $WORKPATH/depth $DEPTHPATH
     mv $WORKPATH/points_mvsnet/consistencyCheck*/final3d_model.ply $PTPATH

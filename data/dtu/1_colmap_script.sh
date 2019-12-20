@@ -73,7 +73,7 @@ do
     
     mkdir -p $OUTPATH_P
     mkdir -p $OUTPATH_G
-    python data/dtu/extract_depth.py "$WORKPATH/stereo/depth_maps/" photometric $OUTPATH_P
-    python data/dtu/extract_depth.py "$WORKPATH/stereo/depth_maps/" geometric $OUTPATH_G
+    python data/dtu/2_colmap_depth_to_npy.py "$WORKPATH/stereo/depth_maps/" photometric $OUTPATH_P
+    python data/dtu/2_colmap_depth_to_npy.py "$WORKPATH/stereo/depth_maps/" geometric $OUTPATH_G
     mv $WORKPATH/fused.ply $PTPATH
 done

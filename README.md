@@ -41,7 +41,7 @@ It can be compiled by
 ## Running the evaluation
 
 For running the evaluation, download the pretrained networks [here](https://avg.is.tuebingen.mpg.de/research_projects/defusr), as well as the DTU dataset.
-Fix the relevant paths in the scripts in the `evaluations/` folder, and run the scripts.
+Fix the relevant paths in the scripts in the `local_config.py` file, and run the scripts.
 First, however, the colmap and MVSNet outputs will need to be created. Please refer to the relevant scripts in the data/ folder for this.
 For the COLMAP fusion, a patch to the base COLMAP version is necessary (which allows fusion without sparse matches, i.e. from the manually generated fusion lists).
 You can find the patch [here](data/colmap_patch.patch).
@@ -49,3 +49,4 @@ You can find the patch [here](data/colmap_patch.patch).
 ## External dependencies
 
 For the MVSNet repository, I suggest checking out commit 9284c4bc8. The scripts provided here interface with the output created by that commit.
+For the COLMAP repository, I suggest checking out commit c13602fe5. Similarly, the patch provided above also acts correctly on that commit.
